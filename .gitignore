@@ -3,9 +3,7 @@
 [Oo]bj/
 Local.testsettings
 TraceAndTestImpact.testsettings
-giledrose.test/Properties/
 giledrose.vsmdi
-giledrose/Properties/
 # mstest test results
 TestResults
 
