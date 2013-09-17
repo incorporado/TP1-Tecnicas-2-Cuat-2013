@@ -11,6 +11,9 @@ namespace Fiuba.Tecnicas.Giledrose
         public const int TIPO_DE_PRODUCTO_2 = 2;
         public const int TIPO_DE_PRODUCTO_3 = 3;
         public const int TIPO_DE_PRODUCTO_NO_IDENTIFICADO = 4;
+        public const int MAXIMA_CALIDAD = 50;
+        public const int A_DIEZ_DIAS_DEL_VENCIMIENTO = 11;
+        public const int A_CINCO_DIAS_DEL_VENCIMIENTO = 6;
 
         private readonly IEnumerable<Item> items;
 
@@ -67,11 +70,11 @@ namespace Fiuba.Tecnicas.Giledrose
         {
             item.SellIn -= 1;
 
-            if ((item.Quality + 1 < 50) && (item.SellIn < 0))
+            if ((item.Quality + 1 < MAXIMA_CALIDAD) && (item.SellIn < 0))
             {
                 item.Quality += 2;
             }
-            else if (item.Quality < 50)
+            else if (item.Quality < MAXIMA_CALIDAD)
             {
                 item.Quality += 1;
             }
@@ -85,15 +88,15 @@ namespace Fiuba.Tecnicas.Giledrose
             }
             else
             {
-                if (item.Quality + 1 > 50 - 1)
+                if (item.Quality + 1 > MAXIMA_CALIDAD - 1)
                 {
                     item.Quality += 1;
                 }
-                else if ((item.Quality + 1 < 50) && (item.SellIn < 6))
+                else if ((item.Quality + 1 < MAXIMA_CALIDAD) && (item.SellIn < A_CINCO_DIAS_DEL_VENCIMIENTO))
                 {
                     item.Quality += 3;
                 }
-                else if ((item.Quality + 1 < 50) && (item.SellIn < 11))
+                else if ((item.Quality + 1 < MAXIMA_CALIDAD) && (item.SellIn < A_DIEZ_DIAS_DEL_VENCIMIENTO))
                 {
                     item.Quality += 2;
                 }
