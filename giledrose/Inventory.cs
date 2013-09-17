@@ -32,7 +32,7 @@ namespace Fiuba.Tecnicas.Giledrose
             };
         }
 
-        public int esTipoDeProducto(string itemName)
+        private int esTipoDeProducto(string itemName)
         {
             if ((itemName != "Aged Brie") && (itemName != "Backstage passes to a TAFKAL80ETC concert")
                     && (itemName != "Sulfuras, Hand of Ragnaros"))
@@ -48,63 +48,77 @@ namespace Fiuba.Tecnicas.Giledrose
 
         }
 
+        private void actualizarProductoTipo1(Item item)
+        {
+            item.SellIn -= 1;
+
+            if ((item.SellIn < 0) && (item.Quality - 1 > 0))
+            {
+                item.Quality -= 2;
+
+            }
+            else if (item.Quality > 0)
+            {
+                item.Quality -= 1;
+            }
+        }
+
+        private void actualizarProductoTipo2(Item item)
+        {
+            item.SellIn -= 1;
+
+            if ((item.Quality + 1 < 50) && (item.SellIn < 0))
+            {
+                item.Quality += 2;
+            }
+            else if (item.Quality < 50)
+            {
+                item.Quality += 1;
+            }
+        }
+
+        private void actualizarProductoTipo3(Item item)
+        {
+            if (item.SellIn - 1 < 0)
+            {
+                item.Quality = 0;
+            }
+            else
+            {
+                if (item.Quality + 1 > 50 - 1)
+                {
+                    item.Quality += 1;
+                }
+                else if ((item.Quality + 1 < 50) && (item.SellIn < 6))
+                {
+                    item.Quality += 3;
+                }
+                else if ((item.Quality + 1 < 50) && (item.SellIn < 11))
+                {
+                    item.Quality += 2;
+                }
+            }
+
+            item.SellIn -= 1;
+        }
+
         public void updateQuality()
         {
             foreach (var item in items)
             {
                 if ( esTipoDeProducto (item.Name) == TIPO_DE_PRODUCTO_1 )
                 {
-                    item.SellIn -= 1;
-
-                    if ( (item.SellIn < 0) && (item.Quality - 1 > 0) )
-                    {
-                        item.Quality -= 2;
-                        
-                    }
-                    else if (item.Quality > 0)
-                    {
-                        item.Quality -= 1;                        
-                    }
+                    this.actualizarProductoTipo1(item);
                 }               
 
                 if ( esTipoDeProducto (item.Name) == TIPO_DE_PRODUCTO_2 )
                 {
-                    item.SellIn -= 1;   
-
-                    if ( (item.Quality + 1 < 50) && (item.SellIn < 0) )
-                    {
-                        item.Quality += 2;                                         
-                    }
-                    else if (item.Quality < 50)
-                    {
-                        item.Quality += 1;
-                    }
+                    actualizarProductoTipo2(item);
                 }
 
                 if ( esTipoDeProducto (item.Name) == TIPO_DE_PRODUCTO_3 )
-                {                    
-
-                    if (item.SellIn - 1 < 0)
-                    {
-                        item.Quality = 0;                        
-                    }
-                    else
-                    {                        
-                        if (item.Quality + 1 > 50 - 1)
-                        {
-                            item.Quality += 1;
-                        }
-                        else if ( (item.Quality + 1 < 50) && (item.SellIn < 6) ) 
-                        {                            
-                            item.Quality += 3;                            
-                        }
-                        else if ( (item.Quality + 1 < 50) && (item.SellIn < 11) ) 
-                        {
-                            item.Quality += 2;
-                        }                        
-                    }
-
-                    item.SellIn -= 1;
+                {
+                    this.actualizarProductoTipo3(item);
                 }               
             }
         }
