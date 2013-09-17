@@ -6,7 +6,12 @@ using System.Text;
 namespace Fiuba.Tecnicas.Giledrose
 {
     public class Inventory
-    {
+    
+        public const int TIPO_DE_PRODUCTO_1 = 1;
+        public const int TIPO_DE_PRODUCTO_2 = 2;
+        public const int TIPO_DE_PRODUCTO_3 = 3;
+        public const int TIPO_DE_PRODUCTO_NO_IDENTIFICADO = 4;
+
         private readonly IEnumerable<Item> items;
 
         public Inventory(IEnumerable<Item> items) 
@@ -27,12 +32,27 @@ namespace Fiuba.Tecnicas.Giledrose
             };
         }
 
+        public int esTipoDeProducto(string itemName)
+        {
+            if ((itemName != "Aged Brie") && (itemName != "Backstage passes to a TAFKAL80ETC concert")
+                    && (itemName != "Sulfuras, Hand of Ragnaros"))
+                return TIPO_DE_PRODUCTO_1;
+
+            if (itemName == "Aged Brie")
+                return TIPO_DE_PRODUCTO_2;
+
+            if (itemName == "Backstage passes to a TAFKAL80ETC concert")                    
+                return TIPO_DE_PRODUCTO_3;
+
+            return TIPO_DE_PRODUCTO_NO_IDENTIFICADO;
+
+        }
+
         public void updateQuality()
         {
             foreach (var item in items)
             {
-                if ( (item.Name != "Aged Brie") && (item.Name != "Backstage passes to a TAFKAL80ETC concert") 
-                    && (item.Name != "Sulfuras, Hand of Ragnaros") )
+                if ( esTipoDeProducto (item.Name) == TIPO_DE_PRODUCTO_1 )
                 {
                     item.SellIn -= 1;
 
@@ -47,7 +67,7 @@ namespace Fiuba.Tecnicas.Giledrose
                     }
                 }               
 
-                if ( (item.Name == "Aged Brie") )
+                if ( esTipoDeProducto (item.Name) == TIPO_DE_PRODUCTO_2 )
                 {
                     item.SellIn -= 1;   
 
@@ -61,7 +81,7 @@ namespace Fiuba.Tecnicas.Giledrose
                     }
                 }
 
-                if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                if ( esTipoDeProducto (item.Name) == TIPO_DE_PRODUCTO_3 )
                 {                    
 
                     if (item.SellIn - 1 < 0)
