@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Fiuba.Tecnicas.Giledrose
 {
-    public class Inventory
+    public class Inventory{
     
         public const int TIPO_DE_PRODUCTO_1 = 1;
         public const int TIPO_DE_PRODUCTO_2 = 2;
