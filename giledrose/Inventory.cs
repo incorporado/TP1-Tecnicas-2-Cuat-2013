@@ -10,7 +10,8 @@ namespace Fiuba.Tecnicas.Giledrose
         public const int TIPO_DE_PRODUCTO_1 = 1;
         public const int TIPO_DE_PRODUCTO_2 = 2;
         public const int TIPO_DE_PRODUCTO_3 = 3;
-        public const int TIPO_DE_PRODUCTO_NO_IDENTIFICADO = 4;
+        public const int TIPO_DE_PRODUCTO_4 = 4;
+        public const int TIPO_DE_PRODUCTO_NO_IDENTIFICADO = 5;
         public const int MAXIMA_CALIDAD = 50;
         public const int A_DIEZ_DIAS_DEL_VENCIMIENTO = 11;
         public const int A_CINCO_DIAS_DEL_VENCIMIENTO = 6;
@@ -38,7 +39,7 @@ namespace Fiuba.Tecnicas.Giledrose
         private int esTipoDeProducto(string itemName)
         {
             if ((itemName != "Aged Brie") && (itemName != "Backstage passes to a TAFKAL80ETC concert")
-                    && (itemName != "Sulfuras, Hand of Ragnaros"))
+                    && (itemName != "Sulfuras, Hand of Ragnaros") && (itemName != "Conjured Mana Cake"))
                 return TIPO_DE_PRODUCTO_1;
 
             if (itemName == "Aged Brie")
@@ -46,6 +47,9 @@ namespace Fiuba.Tecnicas.Giledrose
 
             if (itemName == "Backstage passes to a TAFKAL80ETC concert")                    
                 return TIPO_DE_PRODUCTO_3;
+
+            if (itemName == "Conjured Mana Cake")
+                return TIPO_DE_PRODUCTO_4;
 
             return TIPO_DE_PRODUCTO_NO_IDENTIFICADO;
 
@@ -92,7 +96,7 @@ namespace Fiuba.Tecnicas.Giledrose
                 {
                     item.Quality += 1;
                 }
-                else if ((item.Quality + 1 < MAXIMA_CALIDAD) && (item.SellIn < A_CINCO_DIAS_DEL_VENCIMIENTO))
+                else if ((item.Quality + 2 < MAXIMA_CALIDAD) && (item.SellIn < A_CINCO_DIAS_DEL_VENCIMIENTO))
                 {
                     item.Quality += 3;
                 }
@@ -103,6 +107,21 @@ namespace Fiuba.Tecnicas.Giledrose
             }
 
             item.SellIn -= 1;
+        }
+
+        private void actualizarProductoTipo4(Item item)
+        {
+            item.SellIn -= 1;
+
+            if ( (item.SellIn > 0) && (item.Quality > 0) )
+            {
+                item.Quality -= 2;
+            }
+            else if (item.Quality > 0)
+            {
+                item.Quality -= 4;
+            }
+            if (item.Quality < 0) item.Quality = 0;
         }
 
         public void updateQuality()
@@ -122,7 +141,12 @@ namespace Fiuba.Tecnicas.Giledrose
                 if ( esTipoDeProducto (item.Name) == TIPO_DE_PRODUCTO_3 )
                 {
                     this.actualizarProductoTipo3(item);
-                }               
+                }
+
+                if (esTipoDeProducto(item.Name) == TIPO_DE_PRODUCTO_4 )
+                {
+                    this.actualizarProductoTipo4(item);
+                }
             }
         }
     }
