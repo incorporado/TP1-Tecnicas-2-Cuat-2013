@@ -8,10 +8,10 @@ namespace Fiuba.Tecnicas.Giledrose
 {    
     public class Inventory{
         
-        private ArrayList productosTipo1 =  new ArrayList();
-        private ArrayList productosTipo2 =  new ArrayList();
-        private ArrayList productosTipo3 =  new ArrayList();
-        private ArrayList productosTipo4 =  new ArrayList();
+        private ArrayList productType1 =  new ArrayList();
+        private ArrayList productType2 =  new ArrayList();
+        private ArrayList productType3 =  new ArrayList();
+        private ArrayList productType4 =  new ArrayList();
     
         private readonly IEnumerable<Item> items;
 
@@ -33,47 +33,47 @@ namespace Fiuba.Tecnicas.Giledrose
             };            
         }
 
-        private void agregarProductos () 
+        private void addProducts () 
         {
-            this.productosTipo1.Add("+5 Dexterity Vest");
-            this.productosTipo1.Add("Elixir of the Mongoose");
-            this.productosTipo2.Add("Aged Brie");
-            this.productosTipo3.Add("Backstage passes to a TAFKAL80ETC concert");
-            this.productosTipo4.Add("Conjured Mana Cake");
+            this.productType1.Add("+5 Dexterity Vest");
+            this.productType1.Add("Elixir of the Mongoose");
+            this.productType2.Add("Aged Brie");
+            this.productType3.Add("Backstage passes to a TAFKAL80ETC concert");
+            this.productType4.Add("Conjured Mana Cake");
         }
 
-        private Producto esTipoDeProducto(string itemName)
+        private Product isTypeProduct(string itemName)
         {
-            Producto producto;
+            Product product;
 
-            if (this.productosTipo1.Contains(itemName))
+            if (this.productType1.Contains(itemName))
             {
-                return producto = new Tipo1();
+                return product = new Type1();
             }
-            if (this.productosTipo2.Contains(itemName))
+            if (this.productType2.Contains(itemName))
             {
-                return producto = new Tipo2();
+                return product = new Type2();
             }
-            if (this.productosTipo3.Contains(itemName))
+            if (this.productType3.Contains(itemName))
             {
-                return producto = new Tipo3();
+                return product = new Type3();
             }
-            if (this.productosTipo4.Contains(itemName))
+            if (this.productType4.Contains(itemName))
             {
-                return producto = new Tipo4();
+                return product = new Type4();
             }
             
-            return producto = new TipoNulo();
+            return product = new NullType();
         }
         
         public void updateQuality()
         {
-            this.agregarProductos();
+            this.addProducts();
 
             foreach (var item in items)
             {
-                Producto producto = this.esTipoDeProducto(item.Name);
-                producto.actualizar(item);               
+                Product product = this.isTypeProduct(item.Name);
+                product.update(item);               
             }
         }
     }

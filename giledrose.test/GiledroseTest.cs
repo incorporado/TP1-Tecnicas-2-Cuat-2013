@@ -11,15 +11,15 @@ namespace Giledrose.Test
     [TestClass]
     public class GiledroseTest
     {
-        List<Item> itemsNuevos;
-        List<Item> itemsSinCambios;
+        List<Item> newItems;
+        List<Item> unchangedItems;
         
-        Inventory inventario;
+        Inventory inventory;
                 
         [TestInitialize()]
         public void setUp()
         {
-            this.itemsNuevos = new List<Item>
+            this.newItems = new List<Item>
             {
                 new Item("Sulfuras, Hand of Ragnaros", 0, 0), //1
                 new Item("Sulfuras, Hand of Ragnaros", -1, 0), //2
@@ -43,7 +43,7 @@ namespace Giledrose.Test
                 new Item("Conjured Mana Cake", 0, 20),//20
             };
 
-            this.itemsSinCambios = new List<Item>
+            this.unchangedItems = new List<Item>
             {
                 new Item("Sulfuras, Hand of Ragnaros", 0, 0), //1
                 new Item("Sulfuras, Hand of Ragnaros", -1, 0), //2
@@ -67,169 +67,169 @@ namespace Giledrose.Test
                 new Item("Conjured Mana Cake", 0, 20),//20                
             };
             
-            this.inventario = new Inventory(itemsNuevos);
-            this.inventario.updateQuality();
+            this.inventory = new Inventory(newItems);
+            this.inventory.updateQuality();
         }
 
         [TestMethod]
-        public void TestParaElemento1DeLaLista()
+        public void TestForItem1()
         {
-            Assert.AreEqual(this.itemsSinCambios[0].SellIn, this.itemsNuevos[0].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[0].Quality, this.itemsNuevos[0].Quality);
-
-        }
-
-        [TestMethod]
-        public void TestParaElemento2DeLaLista()
-        {
-            Assert.AreEqual(this.itemsSinCambios[1].SellIn, this.itemsNuevos[1].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[1].Quality, this.itemsNuevos[1].Quality);
+            Assert.AreEqual(this.unchangedItems[0].SellIn, this.newItems[0].SellIn);
+            Assert.AreEqual(this.unchangedItems[0].Quality, this.newItems[0].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento3DeLaLista()
+        public void TestForItem2()
         {
-            Assert.AreEqual(this.itemsSinCambios[2].SellIn, this.itemsNuevos[2].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[2].Quality, this.itemsNuevos[2].Quality);
+            Assert.AreEqual(this.unchangedItems[1].SellIn, this.newItems[1].SellIn);
+            Assert.AreEqual(this.unchangedItems[1].Quality, this.newItems[1].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento4DeLaLista()
+        public void TestForItem3()
         {
-            Assert.AreEqual(this.itemsSinCambios[3].SellIn - 1, this.itemsNuevos[3].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[3].Quality, this.itemsNuevos[3].Quality);
+            Assert.AreEqual(this.unchangedItems[2].SellIn, this.newItems[2].SellIn);
+            Assert.AreEqual(this.unchangedItems[2].Quality, this.newItems[2].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento5DeLaLista()
+        public void TestForItem4()
         {
-            Assert.AreEqual(this.itemsSinCambios[4].SellIn - 1, this.itemsNuevos[4].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[4].Quality + 2, this.itemsNuevos[4].Quality);
+            Assert.AreEqual(this.unchangedItems[3].SellIn - 1, this.newItems[3].SellIn);
+            Assert.AreEqual(this.unchangedItems[3].Quality, this.newItems[3].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento6DeLaLista()
+        public void TestForItem5()
         {
-            Assert.AreEqual(this.itemsSinCambios[5].SellIn - 1, this.itemsNuevos[5].SellIn);
-            Assert.AreEqual(0, this.itemsNuevos[5].Quality);
+            Assert.AreEqual(this.unchangedItems[4].SellIn - 1, this.newItems[4].SellIn);
+            Assert.AreEqual(this.unchangedItems[4].Quality + 2, this.newItems[4].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento7DeLaLista()
+        public void TestForItem6()
         {
-            Assert.AreEqual(this.itemsSinCambios[6].SellIn - 1, this.itemsNuevos[6].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[6].Quality + 1, this.itemsNuevos[6].Quality);
+            Assert.AreEqual(this.unchangedItems[5].SellIn - 1, this.newItems[5].SellIn);
+            Assert.AreEqual(0, this.newItems[5].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento8DeLaLista() 
+        public void TestForItem7()
         {
-            Assert.AreEqual(this.itemsSinCambios[7].SellIn - 1, this.itemsNuevos[7].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[7].Quality + 1, this.itemsNuevos[7].Quality);
+            Assert.AreEqual(this.unchangedItems[6].SellIn - 1, this.newItems[6].SellIn);
+            Assert.AreEqual(this.unchangedItems[6].Quality + 1, this.newItems[6].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento9DeLaLista() 
+        public void TestForItem8() 
         {
-            Assert.AreEqual(this.itemsSinCambios[8].SellIn - 1, this.itemsNuevos[8].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[8].Quality + 2, this.itemsNuevos[8].Quality);
+            Assert.AreEqual(this.unchangedItems[7].SellIn - 1, this.newItems[7].SellIn);
+            Assert.AreEqual(this.unchangedItems[7].Quality + 1, this.newItems[7].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento10DeLaLista() 
+        public void TestForItem9() 
         {
-            Assert.AreEqual(this.itemsSinCambios[9].SellIn - 1, this.itemsNuevos[9].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[9].Quality + 3, this.itemsNuevos[9].Quality);
+            Assert.AreEqual(this.unchangedItems[8].SellIn - 1, this.newItems[8].SellIn);
+            Assert.AreEqual(this.unchangedItems[8].Quality + 2, this.newItems[8].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento11DeLaLista()
+        public void TestForItem10() 
         {
-            Assert.AreEqual(this.itemsSinCambios[10].SellIn - 1, this.itemsNuevos[10].SellIn);
-            Assert.AreEqual(0, this.itemsNuevos[10].Quality);
+            Assert.AreEqual(this.unchangedItems[9].SellIn - 1, this.newItems[9].SellIn);
+            Assert.AreEqual(this.unchangedItems[9].Quality + 3, this.newItems[9].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento12DeLaLista()
+        public void TestForItem11()
         {
-            Assert.AreEqual(this.itemsSinCambios[11].SellIn - 1, this.itemsNuevos[11].SellIn);
-            Assert.AreEqual(0, this.itemsNuevos[11].Quality);
+            Assert.AreEqual(this.unchangedItems[10].SellIn - 1, this.newItems[10].SellIn);
+            Assert.AreEqual(0, this.newItems[10].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento13DeLaLista()
+        public void TestForItem12()
         {
-            Assert.AreEqual(this.itemsSinCambios[12].SellIn - 1, this.itemsNuevos[12].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[12].Quality - 1, this.itemsNuevos[12].Quality);
+            Assert.AreEqual(this.unchangedItems[11].SellIn - 1, this.newItems[11].SellIn);
+            Assert.AreEqual(0, this.newItems[11].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento14DeLaLista()
+        public void TestForItem13()
         {
-            Assert.AreEqual(this.itemsSinCambios[13].SellIn - 1, this.itemsNuevos[13].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[13].Quality - 1, this.itemsNuevos[13].Quality);
+            Assert.AreEqual(this.unchangedItems[12].SellIn - 1, this.newItems[12].SellIn);
+            Assert.AreEqual(this.unchangedItems[12].Quality - 1, this.newItems[12].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento15DeLaLista()
+        public void TestForItem14()
         {
-            Assert.AreEqual(this.itemsSinCambios[14].SellIn - 1, this.itemsNuevos[14].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[14].Quality - 2, this.itemsNuevos[14].Quality);
+            Assert.AreEqual(this.unchangedItems[13].SellIn - 1, this.newItems[13].SellIn);
+            Assert.AreEqual(this.unchangedItems[13].Quality - 1, this.newItems[13].Quality);
+
+        }
+
+        [TestMethod]
+        public void TestForItem15()
+        {
+            Assert.AreEqual(this.unchangedItems[14].SellIn - 1, this.newItems[14].SellIn);
+            Assert.AreEqual(this.unchangedItems[14].Quality - 2, this.newItems[14].Quality);
 
         }
 
         //verifica que conjured disminuye en 2
         [TestMethod]
-        public void TestParaElemento16DeLaLista()
+        public void TestForItem16()
         {
-            Assert.AreEqual(this.itemsSinCambios[15].SellIn - 1, this.itemsNuevos[15].SellIn);
-            Assert.AreEqual(0, this.itemsNuevos[15].Quality);
+            Assert.AreEqual(this.unchangedItems[15].SellIn - 1, this.newItems[15].SellIn);
+            Assert.AreEqual(0, this.newItems[15].Quality);
 
         }
 
         [TestMethod]
-        public void TestParaElemento17DeLaLista()
+        public void TestForItem17()
         {
-            Assert.AreEqual(this.itemsSinCambios[16].SellIn - 1, this.itemsNuevos[16].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[16].Quality - 2, this.itemsNuevos[16].Quality);
+            Assert.AreEqual(this.unchangedItems[16].SellIn - 1, this.newItems[16].SellIn);
+            Assert.AreEqual(this.unchangedItems[16].Quality - 2, this.newItems[16].Quality);
 
         }
 
         //verifica que sulfuras tenga calidad constante de 80 y sellin constante de 0
         [TestMethod]
-        public void TestParaElemento18DeLaLista()
+        public void TestForItem18()
         {
-            Assert.AreEqual(this.itemsSinCambios[17].SellIn, this.itemsNuevos[17].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[17].Quality, this.itemsNuevos[17].Quality);
+            Assert.AreEqual(this.unchangedItems[17].SellIn, this.newItems[17].SellIn);
+            Assert.AreEqual(this.unchangedItems[17].Quality, this.newItems[17].Quality);
         }
 
         //Conjured sin vencer decrementa de a 2 la calidad
         [TestMethod]
-        public void TestParaElemento19DeLaLista()
+        public void TestForItem19()
         {
-            Assert.AreEqual(this.itemsSinCambios[18].SellIn - 1, this.itemsNuevos[18].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[18].Quality - 2, this.itemsNuevos[18].Quality);
+            Assert.AreEqual(this.unchangedItems[18].SellIn - 1, this.newItems[18].SellIn);
+            Assert.AreEqual(this.unchangedItems[18].Quality - 2, this.newItems[18].Quality);
         }
 
         //Conjured vencido decrementa de a 4 la calidad
         [TestMethod]
-        public void TestParaElemento20DeLaLista()
+        public void TestForItem20()
         {
-            Assert.AreEqual(this.itemsSinCambios[19].SellIn - 1, this.itemsNuevos[19].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[19].Quality - 4, this.itemsNuevos[19].Quality);
+            Assert.AreEqual(this.unchangedItems[19].SellIn - 1, this.newItems[19].SellIn);
+            Assert.AreEqual(this.unchangedItems[19].Quality - 4, this.newItems[19].Quality);
         } 
     }
 }
