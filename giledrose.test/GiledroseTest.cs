@@ -71,6 +71,7 @@ namespace Giledrose.Test
             this.inventory.updateQuality();
         }
 
+        //Test Sulfuras maints its Quality and Sell In
         [TestMethod]
         public void TestForItem1()
         {
@@ -79,6 +80,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test Sulfuras maints its Quality and Sell In
         [TestMethod]
         public void TestForItem2()
         {
@@ -87,6 +89,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test Sulfuras maints its Quality and Sell In
         [TestMethod]
         public void TestForItem3()
         {
@@ -95,6 +98,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test for Aged Brie not going upper that 50
         [TestMethod]
         public void TestForItem4()
         {
@@ -103,6 +107,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test for Aged Brie Quality goes up by 2 points when expired
         [TestMethod]
         public void TestForItem5()
         {
@@ -111,6 +116,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test Backstage Quality goes to 0 when expired
         [TestMethod]
         public void TestForItem6()
         {
@@ -119,6 +125,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test Backstage Quality not goes upper than 50
         [TestMethod]
         public void TestForItem7()
         {
@@ -127,6 +134,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test Backstage Quality not goes upper than 50
         [TestMethod]
         public void TestForItem8() 
         {
@@ -135,6 +143,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test Backstage Quality not goes upper than 50
         [TestMethod]
         public void TestForItem9() 
         {
@@ -143,6 +152,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test Backstage Quality not goes upper than 50
         [TestMethod]
         public void TestForItem10() 
         {
@@ -151,6 +161,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test Backstage Quality goes to 0 when expired
         [TestMethod]
         public void TestForItem11()
         {
@@ -159,6 +170,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test Backstage Quality goes to 0 when expired
         [TestMethod]
         public void TestForItem12()
         {
@@ -167,6 +179,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test +5 Dexterity Vest Quality doesn't go under 0
         [TestMethod]
         public void TestForItem13()
         {
@@ -175,6 +188,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test +5 Dexterity Vest Quality doesn't go under 0
         [TestMethod]
         public void TestForItem14()
         {
@@ -183,6 +197,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test +5 Dexterity Vest Quality doesn't go under 0
         [TestMethod]
         public void TestForItem15()
         {
@@ -191,7 +206,7 @@ namespace Giledrose.Test
 
         }
 
-        //verifica que conjured disminuye en 2
+        //Test that Conjured no expired reduce quality by 2 points
         [TestMethod]
         public void TestForItem16()
         {
@@ -200,6 +215,7 @@ namespace Giledrose.Test
 
         }
 
+        //Test that Elixir of the Mongoose reduce its Quality by 2 points when expired.
         [TestMethod]
         public void TestForItem17()
         {
@@ -208,7 +224,7 @@ namespace Giledrose.Test
 
         }
 
-        //verifica que sulfuras tenga calidad constante de 80 y sellin constante de 0
+        //Test that Sulfuras maintains the Quality at 80 and Sell In at 0
         [TestMethod]
         public void TestForItem18()
         {
@@ -216,7 +232,7 @@ namespace Giledrose.Test
             Assert.AreEqual(this.unchangedItems[17].Quality, this.newItems[17].Quality);
         }
 
-        //Conjured sin vencer decrementa de a 2 la calidad
+        //Test that Conjured no expired reduce quality by 2 points
         [TestMethod]
         public void TestForItem19()
         {
@@ -224,7 +240,7 @@ namespace Giledrose.Test
             Assert.AreEqual(this.unchangedItems[18].Quality - 2, this.newItems[18].Quality);
         }
 
-        //Conjured vencido decrementa de a 4 la calidad
+        //Test that Conjured expired reduce quality by 4 points
         [TestMethod]
         public void TestForItem20()
         {
