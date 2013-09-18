@@ -8,10 +8,10 @@ namespace Fiuba.Tecnicas.Giledrose
 {    
     public class Inventory{
         
-        private ArrayList productosTipo1;
-        private ArrayList productosTipo2;
-        private ArrayList productosTipo3;
-        private ArrayList productosTipo4;
+        private ArrayList productosTipo1 =  new ArrayList();
+        private ArrayList productosTipo2 =  new ArrayList();
+        private ArrayList productosTipo3 =  new ArrayList();
+        private ArrayList productosTipo4 =  new ArrayList();
     
         private readonly IEnumerable<Item> items;
 
@@ -35,39 +35,11 @@ namespace Fiuba.Tecnicas.Giledrose
 
         private void agregarProductos () 
         {
-            productosTipo1 = new ArrayList();
-            productosTipo2 = new ArrayList();
-            productosTipo3 = new ArrayList();
-            productosTipo4 = new ArrayList();
             this.productosTipo1.Add("+5 Dexterity Vest");
             this.productosTipo1.Add("Elixir of the Mongoose");
             this.productosTipo2.Add("Aged Brie");
             this.productosTipo3.Add("Backstage passes to a TAFKAL80ETC concert");
             this.productosTipo4.Add("Conjured Mana Cake");
-        }
-
-        public void agregarProductos(string nombre, int tipo)
-        {
-            if (tipo == 1)
-            {
-                this.productosTipo1.Add(nombre);
-                return;
-            }
-            if (tipo == 2)
-            {
-                this.productosTipo2.Add(nombre);
-                return;
-            }
-            if (tipo == 3)
-            {
-                this.productosTipo3.Add(nombre);
-                return;
-            }
-            if (tipo == 4)
-            {
-                this.productosTipo4.Add(nombre);
-                return;
-            }
         }
 
         private Producto esTipoDeProducto(string itemName)
