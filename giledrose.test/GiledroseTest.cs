@@ -41,6 +41,7 @@ namespace Giledrose.Test
                 new Item("Elixir of the Mongoose", 0, 10),//17
                 new Item("Sulfuras, Hand of Ragnaros", 0, 80),//18
                 new Item("Conjured Mana Cake", 10, 5),//19
+                new Item("Conjured Mana Cake", 0, 20),//20
             };
 
             this.itemsSinCambios = new List<Item>
@@ -64,6 +65,7 @@ namespace Giledrose.Test
                 new Item("Elixir of the Mongoose", 0, 10),//17
                 new Item("Sulfuras, Hand of Ragnaros", 0, 80),//18
                 new Item("Conjured Mana Cake", 10, 5),//19
+                new Item("Conjured Mana Cake", 0, 20),//20                
             };
             
             this.inventario = new Inventory(itemsNuevos);
@@ -127,7 +129,7 @@ namespace Giledrose.Test
         }
 
         [TestMethod]
-        public void TestParaElemento8DeLaLista()
+        public void TestParaElemento8DeLaLista() 
         {
             Assert.AreEqual(this.itemsSinCambios[7].SellIn - 1, this.itemsNuevos[7].SellIn);
             Assert.AreEqual(this.itemsSinCambios[7].Quality + 1, this.itemsNuevos[7].Quality);
@@ -135,7 +137,7 @@ namespace Giledrose.Test
         }
 
         [TestMethod]
-        public void TestParaElemento9DeLaLista()
+        public void TestParaElemento9DeLaLista() 
         {
             Assert.AreEqual(this.itemsSinCambios[8].SellIn - 1, this.itemsNuevos[8].SellIn);
             Assert.AreEqual(this.itemsSinCambios[8].Quality + 2, this.itemsNuevos[8].Quality);
@@ -143,7 +145,7 @@ namespace Giledrose.Test
         }
 
         [TestMethod]
-        public void TestParaElemento10DeLaLista()
+        public void TestParaElemento10DeLaLista() 
         {
             Assert.AreEqual(this.itemsSinCambios[9].SellIn - 1, this.itemsNuevos[9].SellIn);
             Assert.AreEqual(this.itemsSinCambios[9].Quality + 3, this.itemsNuevos[9].Quality);
@@ -195,7 +197,7 @@ namespace Giledrose.Test
         public void TestParaElemento16DeLaLista()
         {
             Assert.AreEqual(this.itemsSinCambios[15].SellIn - 1, this.itemsNuevos[15].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[15].Quality - 2, this.itemsNuevos[15].Quality);
+            Assert.AreEqual(0, this.itemsNuevos[15].Quality);
 
         }
 
@@ -215,12 +217,21 @@ namespace Giledrose.Test
             Assert.AreEqual(this.itemsSinCambios[17].Quality, this.itemsNuevos[17].Quality);
         }
 
+        //Conjured sin vencer decrementa de a 2 la calidad
         [TestMethod]
         public void TestParaElemento19DeLaLista()
         {
             Assert.AreEqual(this.itemsSinCambios[18].SellIn - 1, this.itemsNuevos[18].SellIn);
-            Assert.AreEqual(this.itemsSinCambios[18].Quality - 1, this.itemsNuevos[18].Quality);
-        }  
+            Assert.AreEqual(this.itemsSinCambios[18].Quality - 2, this.itemsNuevos[18].Quality);
+        }
+
+        //Conjured vencido decrementa de a 4 la calidad
+        [TestMethod]
+        public void TestParaElemento20DeLaLista()
+        {
+            Assert.AreEqual(this.itemsSinCambios[19].SellIn - 1, this.itemsNuevos[19].SellIn);
+            Assert.AreEqual(this.itemsSinCambios[19].Quality - 4, this.itemsNuevos[19].Quality);
+        } 
     }
 }
 
