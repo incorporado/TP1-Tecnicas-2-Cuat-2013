@@ -7,11 +7,8 @@ using System.Text;
 namespace Fiuba.Tecnicas.Giledrose
 {    
     public class Inventory{
-        
-        private ArrayList productType1 =  new ArrayList();
-        private ArrayList productType2 =  new ArrayList();
-        private ArrayList productType3 =  new ArrayList();
-        private ArrayList productType4 =  new ArrayList();
+
+        ProductFactory factory = new ProductFactory();
     
         private readonly IEnumerable<Item> items;
 
@@ -31,48 +28,15 @@ namespace Fiuba.Tecnicas.Giledrose
                 new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
                 new Item("Conjured Mana Cake", 3, 6),
             };            
-        }
-
-        private void addProducts () 
-        {
-            this.productType1.Add("+5 Dexterity Vest");
-            this.productType1.Add("Elixir of the Mongoose");
-            this.productType2.Add("Aged Brie");
-            this.productType3.Add("Backstage passes to a TAFKAL80ETC concert");
-            this.productType4.Add("Conjured Mana Cake");
-        }
-
-        private Product isTypeProduct(string itemName)
-        {
-            Product product;
-
-            if (this.productType1.Contains(itemName))
-            {
-                return product = new Type1();
-            }
-            if (this.productType2.Contains(itemName))
-            {
-                return product = new Type2();
-            }
-            if (this.productType3.Contains(itemName))
-            {
-                return product = new Type3();
-            }
-            if (this.productType4.Contains(itemName))
-            {
-                return product = new Type4();
-            }
-            
-            return product = new NullType();
-        }
+        }               
         
         public void updateQuality()
         {
-            this.addProducts();
+            factory.addProducts();
 
             foreach (var item in items)
             {
-                Product product = this.isTypeProduct(item.Name);
+                Product product = this.factory.createProduct(item.Name);
                 product.update(item);               
             }
         }
