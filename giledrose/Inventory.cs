@@ -7,15 +7,6 @@ namespace Fiuba.Tecnicas.Giledrose
 {
     public class Inventory{
     
-        public const int TIPO_DE_PRODUCTO_1 = 1;
-        public const int TIPO_DE_PRODUCTO_2 = 2;
-        public const int TIPO_DE_PRODUCTO_3 = 3;
-        public const int TIPO_DE_PRODUCTO_4 = 4;
-        public const int TIPO_DE_PRODUCTO_NO_IDENTIFICADO = 5;
-        public const int MAXIMA_CALIDAD = 50;
-        public const int A_DIEZ_DIAS_DEL_VENCIMIENTO = 11;
-        public const int A_CINCO_DIAS_DEL_VENCIMIENTO = 6;
-
         private readonly IEnumerable<Item> items;
 
         public Inventory(IEnumerable<Item> items) 
@@ -42,119 +33,26 @@ namespace Fiuba.Tecnicas.Giledrose
 
             if ((itemName != "Aged Brie") && (itemName != "Backstage passes to a TAFKAL80ETC concert")
                     && (itemName != "Sulfuras, Hand of Ragnaros") && (itemName != "Conjured Mana Cake"))
-                return producto = new Tipo1();
-                //return TIPO_DE_PRODUCTO_1;
+                return producto = new Tipo1();                
 
             if (itemName == "Aged Brie")
-                return producto = new Tipo2();
-                //return TIPO_DE_PRODUCTO_2;
+                return producto = new Tipo2();                
 
             if (itemName == "Backstage passes to a TAFKAL80ETC concert")
-                return producto = new Tipo3();
-                //return TIPO_DE_PRODUCTO_3;
+                return producto = new Tipo3();                
 
             if (itemName == "Conjured Mana Cake")
-                return producto = new Tipo4();
-                //return TIPO_DE_PRODUCTO_4;
+                return producto = new Tipo4();        
 
             return producto = new TipoNulo();
         }
-
-        private void actualizarProductoTipo1(Item item)
-        {
-            /*item.SellIn -= 1;
-
-            if ((item.SellIn < 0) && (item.Quality - 1 > 0))
-            {
-                item.Quality -= 2;
-
-            }
-            else if (item.Quality > 0)
-            {
-                item.Quality -= 1;
-            }*/
-        }
-
-        private void actualizarProductoTipo2(Item item)
-        {
-            /*item.SellIn -= 1;
-
-            if ((item.Quality + 1 < MAXIMA_CALIDAD) && (item.SellIn < 0))
-            {
-                item.Quality += 2;
-            }
-            else if (item.Quality < MAXIMA_CALIDAD)
-            {
-                item.Quality += 1;
-            }*/
-        }
-
-        private void actualizarProductoTipo3(Item item)
-        {
-            /*if (item.SellIn - 1 < 0)
-            {
-                item.Quality = 0;
-            }
-            else
-            {
-                if (item.Quality + 1 > MAXIMA_CALIDAD - 1)
-                {
-                    item.Quality += 1;
-                }
-                else if ((item.Quality + 2 < MAXIMA_CALIDAD) && (item.SellIn < A_CINCO_DIAS_DEL_VENCIMIENTO))
-                {
-                    item.Quality += 3;
-                }
-                else if ((item.Quality + 1 < MAXIMA_CALIDAD) && (item.SellIn < A_DIEZ_DIAS_DEL_VENCIMIENTO))
-                {
-                    item.Quality += 2;
-                }
-            }
-
-            item.SellIn -= 1;*/
-        }
-
-        private void actualizarProductoTipo4(Item item)
-        {
-            /*item.SellIn -= 1;
-
-            if ( (item.SellIn > 0) && (item.Quality > 0) )
-            {
-                item.Quality -= 2;
-            }
-            else if (item.Quality > 0)
-            {
-                item.Quality -= 4;
-            }
-            if (item.Quality < 0) item.Quality = 0;*/
-        }
-
+        
         public void updateQuality()
         {
             foreach (var item in items)
             {
                 Producto producto = this.esTipoDeProducto(item.Name);
-                producto.actualizar(item);
-                /*
-                if ( esTipoDeProducto (item.Name) == TIPO_DE_PRODUCTO_1 )
-                {
-                    this.actualizarProductoTipo1(item);
-                }               
-
-                if ( esTipoDeProducto (item.Name) == TIPO_DE_PRODUCTO_2 )
-                {
-                    actualizarProductoTipo2(item);
-                }
-
-                if ( esTipoDeProducto (item.Name) == TIPO_DE_PRODUCTO_3 )
-                {
-                    this.actualizarProductoTipo3(item);
-                }
-
-                if (esTipoDeProducto(item.Name) == TIPO_DE_PRODUCTO_4 )
-                {
-                    this.actualizarProductoTipo4(item);
-                }*/
+                producto.actualizar(item);               
             }
         }
     }
