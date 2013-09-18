@@ -36,28 +36,33 @@ namespace Fiuba.Tecnicas.Giledrose
             };
         }
 
-        private int esTipoDeProducto(string itemName)
+        private Producto esTipoDeProducto(string itemName)
         {
+            Producto producto;
+
             if ((itemName != "Aged Brie") && (itemName != "Backstage passes to a TAFKAL80ETC concert")
                     && (itemName != "Sulfuras, Hand of Ragnaros") && (itemName != "Conjured Mana Cake"))
-                return TIPO_DE_PRODUCTO_1;
+                return producto = new Tipo1();
+                //return TIPO_DE_PRODUCTO_1;
 
             if (itemName == "Aged Brie")
-                return TIPO_DE_PRODUCTO_2;
+                return producto = new Tipo2();
+                //return TIPO_DE_PRODUCTO_2;
 
-            if (itemName == "Backstage passes to a TAFKAL80ETC concert")                    
-                return TIPO_DE_PRODUCTO_3;
+            if (itemName == "Backstage passes to a TAFKAL80ETC concert")
+                return producto = new Tipo3();
+                //return TIPO_DE_PRODUCTO_3;
 
             if (itemName == "Conjured Mana Cake")
-                return TIPO_DE_PRODUCTO_4;
+                return producto = new Tipo4();
+                //return TIPO_DE_PRODUCTO_4;
 
-            return TIPO_DE_PRODUCTO_NO_IDENTIFICADO;
-
+            return producto = new TipoNulo();
         }
 
         private void actualizarProductoTipo1(Item item)
         {
-            item.SellIn -= 1;
+            /*item.SellIn -= 1;
 
             if ((item.SellIn < 0) && (item.Quality - 1 > 0))
             {
@@ -67,12 +72,12 @@ namespace Fiuba.Tecnicas.Giledrose
             else if (item.Quality > 0)
             {
                 item.Quality -= 1;
-            }
+            }*/
         }
 
         private void actualizarProductoTipo2(Item item)
         {
-            item.SellIn -= 1;
+            /*item.SellIn -= 1;
 
             if ((item.Quality + 1 < MAXIMA_CALIDAD) && (item.SellIn < 0))
             {
@@ -81,12 +86,12 @@ namespace Fiuba.Tecnicas.Giledrose
             else if (item.Quality < MAXIMA_CALIDAD)
             {
                 item.Quality += 1;
-            }
+            }*/
         }
 
         private void actualizarProductoTipo3(Item item)
         {
-            if (item.SellIn - 1 < 0)
+            /*if (item.SellIn - 1 < 0)
             {
                 item.Quality = 0;
             }
@@ -106,12 +111,12 @@ namespace Fiuba.Tecnicas.Giledrose
                 }
             }
 
-            item.SellIn -= 1;
+            item.SellIn -= 1;*/
         }
 
         private void actualizarProductoTipo4(Item item)
         {
-            item.SellIn -= 1;
+            /*item.SellIn -= 1;
 
             if ( (item.SellIn > 0) && (item.Quality > 0) )
             {
@@ -121,13 +126,16 @@ namespace Fiuba.Tecnicas.Giledrose
             {
                 item.Quality -= 4;
             }
-            if (item.Quality < 0) item.Quality = 0;
+            if (item.Quality < 0) item.Quality = 0;*/
         }
 
         public void updateQuality()
         {
             foreach (var item in items)
             {
+                Producto producto = this.esTipoDeProducto(item.Name);
+                producto.actualizar(item);
+                /*
                 if ( esTipoDeProducto (item.Name) == TIPO_DE_PRODUCTO_1 )
                 {
                     this.actualizarProductoTipo1(item);
@@ -146,7 +154,7 @@ namespace Fiuba.Tecnicas.Giledrose
                 if (esTipoDeProducto(item.Name) == TIPO_DE_PRODUCTO_4 )
                 {
                     this.actualizarProductoTipo4(item);
-                }
+                }*/
             }
         }
     }

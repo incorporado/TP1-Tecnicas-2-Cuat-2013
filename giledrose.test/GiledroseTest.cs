@@ -15,8 +15,7 @@ namespace Giledrose.Test
         List<Item> itemsSinCambios;
         
         Inventory inventario;
-
-        //public GiledroseTest()
+                
         [TestInitialize()]
         public void setUp()
         {
